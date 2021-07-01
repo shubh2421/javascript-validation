@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <title>Java-validation</title>
+    </head>
+    <body>
+        <form method="post" name="form1" onsubmit="return validateForm()" action="">
+            Fields marked with * are required to be filled out!
+            <br />
+            First Name : 
+            <input type="text" id="firstname" name="First Name" placeholder=""  required/>
+            <br />
+            Surname :
+            <input type="text" id="surname" name="Surname" placeholder=""  required/>
+            <br />
+            
+            Email address :
+            <input type="text" id="emailaddress" name="Email Address" placeholder="" required/>
+            <br />
+            Contact number:
+            <input type="text" id="phonenumber" name="Contact Phone Number" placeholder="e.g. 7575097010" required />
+            <br />
+            Date of Birth :
+            <input type="text" id="dateofbirth" name="Date of Birth" placeholder="DD/MM/YYYY" />
+            <br />
+           
+            <input type="submit" value="Submit" /><input type="reset" value="Reset" />
+        </form>
+    </body>
+    <script language="JavaScript" type="text/javascript">
+        function validateForm()
+    {
+        var today = new Date();
+        var currentyear = today.getFullYear();
+        var currentmonth = today.getMonth();
+        var currentday = today.getDate();
+        var b = document.getElementById("dateofbirth").value;
+
+
+
+        var birth = new Date(b);
+
+        var birthyear = birth.getFullYear();
+        var birthmonth = birth.getMonth();
+        var birthday = birth.getDate();
+
+        var age = currentyear - birthyear;
+        var age_month = currentmonth - birthmonth;
+        var age_day = currentday - birthday;
+
+
+        if (age > 100) {
+            alert("Age cannot be more than 100 Years.Please enter correct age")
+            return false;
+        }
+       
+        if ((age == 18 && age_month <= 0 && age_day <= 0) || age < 18) {
+            alert("Age should be more than 18 years.Please enter a valid Date of Birth");
+            return false;
+        }
+    }
+
+        </script>
+</html>
